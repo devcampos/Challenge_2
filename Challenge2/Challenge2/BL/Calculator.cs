@@ -3,6 +3,7 @@ using Challenge2.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Challenge2.BL
 {
@@ -86,7 +87,31 @@ namespace Challenge2.BL
             }
         }
 
-        
+
+        /// <summary>
+        /// Method for valid input string
+        /// </summary>
+        /// <param name="s">String to Valid</param>
+        /// <returns>Valid Complex object</returns>
+        public static Complex isValid(string s)
+        {
+           
+            Regex pattern = new Regex(@"^\(-?[0-9]\d*(\.\d+)?([*\,]-?[0-9]\d*(\.\d+)?)\)$");
+            var r = Regex.Replace(s, @"\s +", "");
+            Match match = pattern.Match(r);
+            if (match.Success)
+            {
+                var value = match.Captures[0].Value;
+                var x = float.Parse( value.Substring(value.IndexOf('(') + 1, value.LastIndexOf(',') - 1));
+                var y = float.Parse(value.Substring(value.IndexOf(',') + 1, value.IndexOf(')') - value.IndexOf(',') - 1));
+
+                return new Complex { Real = x, Imaginary = y };
+            }
+           
+            return null;
+        }
+
+
 
 
     }
