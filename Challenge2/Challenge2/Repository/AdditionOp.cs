@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Challenge2
+namespace Challenge2.Repository
 {
-    public class SumOp
+    public class AdditionOp
     {        
 
         public Complex Process(Complex a, Complex b)
