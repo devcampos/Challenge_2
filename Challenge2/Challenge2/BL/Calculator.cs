@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using static Challenge2.Enums;
 
 namespace Challenge2.BL
 {
@@ -93,25 +94,55 @@ namespace Challenge2.BL
         /// </summary>
         /// <param name="s">String to Valid</param>
         /// <returns>Valid Complex object</returns>
-        public static Complex isValid(string s)
+        public static bool isValid(string s, TypeValidation type)
         {
-           
+            var result = false;
+            switch (type)
+            {
+                case TypeValidation.Operator:
+                    
+                    string[] validOp = { "+", "-", "/", "x" };
+                    if (Array.Exists(validOp, element => element == s))
+                    {
+                        result = true;
+                    }
+                    break;
+                case TypeValidation.ComplexType:
+                    Regex pattern = new Regex(@"^\(-?[0-9]\d*(\.\d+)?([*\,]-?[0-9]\d*(\.\d+)?)\)$");
+                    var r = Regex.Replace(s, @"\s +", "");
+                    Match match = pattern.Match(r);
+                    if (match.Success)
+                    {
+                        result = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Transform string to Complex Object
+        /// </summary>
+        /// <param name="s">String with correct format.</param>
+        /// <returns>Complex Object</returns>
+        public static Complex TransfomComplex(string s)
+        {
             Regex pattern = new Regex(@"^\(-?[0-9]\d*(\.\d+)?([*\,]-?[0-9]\d*(\.\d+)?)\)$");
             var r = Regex.Replace(s, @"\s +", "");
             Match match = pattern.Match(r);
             if (match.Success)
             {
                 var value = match.Captures[0].Value;
-                var x = float.Parse( value.Substring(value.IndexOf('(') + 1, value.LastIndexOf(',') - 1));
+                var x = float.Parse(value.Substring(value.IndexOf('(') + 1, value.LastIndexOf(',') - 1));
                 var y = float.Parse(value.Substring(value.IndexOf(',') + 1, value.IndexOf(')') - value.IndexOf(',') - 1));
 
                 return new Complex { Real = x, Imaginary = y };
             }
-           
+
             return null;
         }
-
-
 
 
     }
