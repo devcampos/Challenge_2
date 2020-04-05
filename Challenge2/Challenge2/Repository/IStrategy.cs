@@ -7,7 +7,6 @@ namespace Challenge2.Repository
 {
     public interface IStrategy
     {
-        Complex Process(Complex a, Complex b);
-        string Display(Complex e);
+        Complex Process(Complex a, Complex b);  
     }
 }

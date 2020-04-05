@@ -6,8 +6,13 @@ using System.Text;
 namespace Challenge2.Repository
 {
     public class AdditionOp : IStrategy
-    {        
-
+    {
+        /// <summary>
+        /// Execute Additon Operation
+        /// </summary>
+        /// <param name="a">Firts Input of Complex Object</param>
+        /// <param name="b">Secound Input of Complex Object</param>
+        /// <returns>Complex object with result of operation</returns>
         public Complex Process(Complex a, Complex b)
         {
             var x = a.Real + b.Real;
@@ -15,25 +20,5 @@ namespace Challenge2.Repository
 
             return new Complex { Real = x, Imaginary = y };
         }
-
-        public string Display(Complex e)
-        {
-            if (e.Imaginary == 0)
-            {
-                return e.Real.ToString();
-            }
-
-            if (e.Real == 0)
-            {
-                return $"{e.Imaginary} i";
-            }
-            if (e.Imaginary < 0)
-            {
-                return $"{e.Real}{e.Imaginary}i";
-            }
-
-            return $"{e.Real} + {e.Imaginary}i";
-        }
-
     }
 }

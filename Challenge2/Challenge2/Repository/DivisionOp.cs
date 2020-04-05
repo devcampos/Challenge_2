@@ -7,6 +7,12 @@ namespace Challenge2.Repository
 {
     public class DivisionOp : IStrategy
     {
+        /// <summary>
+        /// Execute Division Operation
+        /// </summary>
+        /// <param name="a">Firts Input of Complex Object</param>
+        /// <param name="b">Secound Input of Complex Object</param>
+        /// <returns>Complex object with result of operation</returns>
         public Complex Process(Complex a, Complex b)
         {
             float aux, x, y;
@@ -27,25 +33,6 @@ namespace Challenge2.Repository
         private double modulo(Complex a, Complex b)
         {
             return Math.Sqrt(a.Real * b.Real + a.Imaginary * b.Imaginary);
-        }
-
-        public string Display(Complex e)
-        {
-            if (e.Imaginary == 0)
-            {
-                return e.Real.ToString();
-            }
-
-            if (e.Real == 0)
-            {
-                return $"{e.Imaginary} i";
-            }
-            if (e.Imaginary < 0)
-            {
-                return $"{e.Real}{e.Imaginary}i";
-            }
-
-            return $"{e.Real} + {e.Imaginary}i";
         }
 
     }
