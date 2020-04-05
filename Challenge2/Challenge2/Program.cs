@@ -13,21 +13,21 @@ namespace Challenge2
             var b = new Complex { Real = 4, Imaginary = 3 };
 
             var add = new AdditionOp();
-            var r = add.Process(a, b);
-            Console.WriteLine($"Addition is : ({r.Real},{r.Imaginary})");
+            var r1 = add.Process(a, b);
+            Console.WriteLine($"Addition is: {add.Display(r1)}");
 
 
             var sb = new SubtractionOp();
             var r2 = sb.Process(a, b);
-            Console.WriteLine($"Subtraction is : ({r2.Real},{r2.Imaginary})");
+            Console.WriteLine($"Subtraction is: {sb.Display(r2)}");
 
             var ml = new MultiplicationOp();
             var r3 = ml.Process(a, b);
-            Console.WriteLine($"Multiplication is : ({r3.Real},{r3.Imaginary})");
+            Console.WriteLine($"Multiplication is: {ml.Display(r3)}");
 
             var dv = new DivisionOp();
             var r4 = dv.Process(a, b);
-            Console.WriteLine($"Divition is : ({r4.Real},{r4.Imaginary})");
+            Console.WriteLine($"Divition is: {dv.Display(r4)}");
 
 
             Console.ReadKey();

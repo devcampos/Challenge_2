@@ -28,5 +28,25 @@ namespace Challenge2.Repository
         {
             return Math.Sqrt(a.Real * b.Real + a.Imaginary * b.Imaginary);
         }
+
+        public string Display(Complex e)
+        {
+            if (e.Imaginary == 0)
+            {
+                return e.Real.ToString();
+            }
+
+            if (e.Real == 0)
+            {
+                return $"{e.Imaginary} i";
+            }
+            if (e.Imaginary < 0)
+            {
+                return $"{e.Real}{e.Imaginary}i";
+            }
+
+            return $"{e.Real} + {e.Imaginary}i";
+        }
+
     }
 }
