@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Challenge2.Repository
 {
-    public class DivisionOp
+    public class DivisionOp : IStrategy
     {
         public Complex Process(Complex a, Complex b)
         {
